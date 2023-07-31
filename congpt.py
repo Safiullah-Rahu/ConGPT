@@ -16,7 +16,7 @@ openai_api_key = st.secrets.secrets.OPENAI_API_KEY
 os.environ["OPENAI_API_KEY"] = openai_api_key
 
 # Define function to generate brand kit
-@st.cache_resource(experimental_allow_widgets=True)
+
 def generate(temperature):
     topic_ = topic #st.text_input("Topic")
     person_ = name #st.text_input("Human Name")
