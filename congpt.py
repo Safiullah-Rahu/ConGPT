@@ -3,7 +3,7 @@ import datetime
 from langchain.llms import OpenAI
 from langchain import PromptTemplate, OpenAI, LLMChain
 import os
-import requests
+
 
 # Setting up Streamlit page configuration
 st.set_page_config(
@@ -110,18 +110,3 @@ human_names = ['Maryam','Sarah', 'John', 'Emily', 'Michael', 'Sophia', 'Daniel',
                'Isabella', 'Alexander', 'Mia', 'Ethan', 'Amelia', 'Benjamin', 'Harper', 'Samuel', 'Evelyn', 'Matthew']
 name = st.selectbox(label="Select Human Name", options=human_names)
 generate(temperature)
-
-@st.cache_data
-def quote():
-    try:
-        response = requests.get("https://api.quotable.io/random")
-        quote = response.json()["content"]
-        author = response.json()["author"]
-        qu = f"Random Quote: '{quote}' - {author}"
-        #st.toast(f"Random Quote: '{quote}' - {author}")
-    except:
-        pass
-    
-    return qu
-quo = quote()
-st.toast(quo)
